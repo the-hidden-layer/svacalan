@@ -18,6 +18,15 @@ data "aws_ami" "my_ami" {
   most_recent = true
 }
 
+data "template_file" "worker" {
+  template = file("worker.sh")
+}
+
+data "template_file" "scheduler" {
+  template = file("scheduler.sh")
+}
+
+
 # data "aws_ec2_spot_price" "market" {
 #   instance_type     = "t2.xlarge"
 #   availability_zone = var.avail_zone

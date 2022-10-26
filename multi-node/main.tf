@@ -23,9 +23,7 @@ resource "aws_spot_instance_request" "node" {
     volume_type = "gp2" # SSD
   }
 
-  //user_data = count.index == 0 ? file("scheduler.sh") : file("worker.sh")
-  user_data = file("${path.module}/worker.sh")
-
+  #user_data = count.index == 0 ? file("./scheduler.sh") : file("./worker.sh")
   provisioner "local-exec" {
     command = "aws ec2 create-tags --resources ${self.spot_instance_id} --tags Key=Name,Value=${count.index == 0 ? "Scheduler" : "Worker-${count.index}"} --region ${var.region}"
   }
