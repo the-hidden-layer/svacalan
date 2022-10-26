@@ -3,7 +3,7 @@ output "id" {
 }
 
 output "public-ip" {
-  value = [aws_spot_instance_request.node.*.public_ip]
+  value       = [aws_spot_instance_request.node.*.public_ip]
   description = "Public IP address"
 }
 

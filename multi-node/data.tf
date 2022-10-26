@@ -1,7 +1,7 @@
 data "aws_ami" "my_ami" {
   owners = ["066673448157"]
   filter {
-    name   = "name"
+    name = "name"
     # search for your AMI as you would in AWS console.
     values = ["*dsc102-dask-environment-public*"]
   }
@@ -18,12 +18,12 @@ data "aws_ami" "my_ami" {
   most_recent = true
 }
 
-data "aws_ec2_spot_price" "market" {
-  instance_type     = "t2.xlarge"
-  availability_zone = var.avail_zone
-
-  filter {
-    name   = "product-description"
-    values = ["Linux/UNIX"]
-  }
-}
+# data "aws_ec2_spot_price" "market" {
+#   instance_type     = "t2.xlarge"
+#   availability_zone = var.avail_zone
+# 
+#   filter {
+#     name   = "product-description"
+#     values = ["Linux/UNIX"]
+#   }
+# }

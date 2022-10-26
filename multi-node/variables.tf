@@ -11,8 +11,8 @@ variable "avail_zone" {
 }
 
 variable "my_ip" {
-  type    = string
-  default = "<MY_PUBLIC_IP_ADDRESS>"
+  type        = string
+  default     = "<MY_PUBLIC_IP_ADDRESS>"
   description = "My public IP address."
 }
 
