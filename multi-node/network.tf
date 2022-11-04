@@ -81,16 +81,8 @@ resource "aws_default_security_group" "main_vpc_security_group" {
 
   # Jupyter notebook
   ingress {
-    from_port   = 8000
-    to_port     = 8888
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # dask dashboard
-  ingress {
-    from_port   = 8001
-    to_port     = 8787
+    from_port   = 0
+    to_port     = 65535
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

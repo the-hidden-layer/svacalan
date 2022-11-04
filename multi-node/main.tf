@@ -18,13 +18,13 @@ resource "aws_spot_instance_request" "node" {
   security_groups             = [aws_default_security_group.main_vpc_security_group.id]
   subnet_id                   = aws_subnet.main_vpc_subnet.id
   user_data                   = count.index == 0 ? file("scheduler.sh") : file("worker.sh")
+
   ebs_block_device {
     device_name = "/dev/sda1"
     volume_size = var.ebs_volume_size
     volume_type = "gp2" # SSD
   }
 
-  #user_data = count.index == 0 ? file("./scheduler.sh") : file("./worker.sh")
   provisioner "local-exec" {
     command = "aws ec2 create-tags --resources ${self.spot_instance_id} --tags Key=Name,Value=${count.index == 0 ? "Scheduler" : "Worker-${count.index}"} --region ${var.region}"
   }
