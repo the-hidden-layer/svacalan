@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /home/ubuntu
-echo "i am worker" > id.txt
+touch iamWORKER
 source dask_env/bin/activate
-#dask-worker tcp://172.31.31.176:8786 --nprocs 4
+pip install "click>=7,<8"
+#dask-scheduler tcp://<TCP_ADDR>:8786 --nprocs 4
